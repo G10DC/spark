@@ -12,23 +12,23 @@ try:
 except Exception:
     HAS_LOCAL_LLM = False
 
-SPARK_PROMPT = """Sei SPARK, un motore di ideazione creativa, pensiero laterale e sintesi multidisciplinare per software ed AI.
-Dato un progetto o un'idea iniziale, applica il framework 4-Lens (Deconstruction, SCAMPER/TRIZ, Friction-to-Feature Inversion, Experience Shift) per generare 3 miglioramenti ad altissimo impatto ("WOW Factor").
+SPARK_PROMPT = """You are SPARK, a creative ideation, lateral thinking, and multidisciplinary synthesis engine for software and AI.
+Given an initial project idea or concept, apply the 4-Lens Framework (Deconstruction, SCAMPER/TRIZ, Friction-to-Feature Inversion, Experience Shift) to generate 3 high-impact breakthrough features ("WOW Factor").
 
-Rispondi in formato Markdown strutturato con:
-1. Visione Creativa & WOW Factor
-2. 3 Funzionalita Breakthrough (Friction -> Feature)
-3. Sinergia con le Skill (Sieve, Scribe, Artisan, Keel)
-4. Bozza Architetturale (Diagramma Mermaid)
+Respond in structured Markdown with:
+1. Creative Vision & WOW Factor
+2. 3 Breakthrough Features (Friction -> Feature Inversion)
+3. Skill Synergy Matrix (Sieve, Scribe, Artisan, Keel, Warden)
+4. Conceptual Architecture (Mermaid Diagram)
 """
 
 def generate_spark_ideas(concept: str) -> str:
-    print(f"[spark] Generazione idee e miglioramenti per: '{concept}'...")
+    print(f"[spark] Generating creative ideas and enhancements for: '{concept}'...")
     
     if HAS_LOCAL_LLM:
         try:
             return gemma_worker.query_gemma_local(
-                prompt=f"Punto di partenza/Idea: {concept}",
+                prompt=f"Concept Idea: {concept}",
                 system_prompt=SPARK_PROMPT
             )
         except Exception as e:
@@ -37,28 +37,28 @@ def generate_spark_ideas(concept: str) -> str:
     # Standalone heuristic fallback
     return f"""# SPARK IDEATION BLUEPRINT: {concept}
 
-## 1. Visione Creativa & WOW Factor
-Evolvere il concetto '{concept}' da uno strumento passivo ad un ecosistema proattivo, automatizzato ed esteticamente d'impatto.
+## 1. Creative Vision & WOW Factor
+Evolve '{concept}' from a passive utility into a proactive, automated, state-of-the-art ecosystem.
 
-## 2. Funzionalita Breakthrough (Friction -> Feature Inversion)
-1. Automazione Proattiva Zero-Click: L'applicazione anticipa l'esigenza dell'utente tramite trigger in background e notifiche intelligenti.
-2. Dashboard Dinamica Glassmorphic: Interfaccia visiva ad alte prestazioni con feedback micro-animato, filtri istantanei e visualizzazione dati query-ready.
-3. Integrazione Gemma 4 12B Off-Grid: Categorizzazione, arricchimento ed analisi avanzata a costo zero su hardware locale.
+## 2. Breakthrough Features (Friction -> Feature Inversion)
+1. Zero-Click Proactive Automation: Anticipates user needs via background triggers and smart notifications.
+2. Dynamic Glassmorphic Dashboard: High-performance visual UI with micro-interactions, live search, and query-ready data.
+3. Off-Grid Gemma 4 12B Integration: Zero-cost categorization, enrichment, and deep local analysis.
 
-## 3. Sinergia con le Skill
-- sieve: Data pipeline ETL a 3 livelli (Raw -> Staged -> Curated) con storico temporale.
-- scribe: Loop di estrazione multimodale (Preprocess -> Extract -> Validate -> Repair).
-- artisan: Design system avanzato e layout pedagogico d'impatto.
+## 3. Antigravity Skill Synergy Matrix
+- sieve: Idempotent 3-layer ETL data pipeline (Raw -> Staged -> Curated) with historical snapshots.
+- scribe: Multimodal vision & OCR extraction loop (Extract -> Validate -> Repair).
+- artisan: Advanced design system & pedagogical visual layout.
 
-## 4. Bozza Architetturale
+## 4. Conceptual Architecture
 ```mermaid
 graph TD
-    Input["Idea / Raw Data"] --> Sieve["sieve Pipeline (Ingest)"]
+    Input["Concept / Raw Data"] --> Sieve["sieve Pipeline (Ingest)"]
     Sieve --> LLM["Gemma 4 12B (Local Spark Engine)"]
     LLM --> UI["artisan Dashboard & Interactive Canvas"]
 ```
 """
 
 if __name__ == "__main__":
-    idea = " ".join(sys.argv[1:]) if len(sys.argv) > 1 else "Progetto Generico"
+    idea = " ".join(sys.argv[1:]) if len(sys.argv) > 1 else "Generic Project"
     print(generate_spark_ideas(idea))

@@ -25,14 +25,14 @@ class SparkEngine:
 
     def ideate(self, concept: str) -> str:
         prompt = f"Idea Concept: {concept}"
-        system_prompt = """Sei SPARK, un motore di ideazione creativa, pensiero laterale e sintesi multidisciplinare per software ed AI.
-Dato un progetto o un'idea iniziale, applica il framework 4-Lens (Deconstruction, SCAMPER/TRIZ, Friction-to-Feature Inversion, Experience Shift) per generare 3 miglioramenti ad altissimo impatto ("WOW Factor").
+        system_prompt = """You are SPARK, a creative ideation, lateral thinking, and multidisciplinary synthesis engine for software and AI.
+Given an initial project idea or concept, apply the 4-Lens Framework (Deconstruction, SCAMPER/TRIZ, Friction-to-Feature Inversion, Experience Shift) to generate 3 high-impact breakthrough features ("WOW Factor").
 
-Rispondi in formato Markdown strutturato con:
-1. Visione Creativa & WOW Factor
-2. 3 Funzionalita Breakthrough (Friction -> Feature)
-3. Sinergia con le Skill (Sieve, Scribe, Artisan, Keel)
-4. Bozza Architetturale (Diagramma Mermaid)
+Respond in structured Markdown with:
+1. Creative Vision & WOW Factor
+2. 3 Breakthrough Features (Friction -> Feature Inversion)
+3. Skill Synergy Matrix (Sieve, Scribe, Artisan, Keel, Warden)
+4. Conceptual Architecture (Mermaid Diagram)
 """
         if self.gemma_worker:
             try:
@@ -48,12 +48,12 @@ Rispondi in formato Markdown strutturato con:
         frictions = IdeationLenses.friction_to_feature_inversion(concept)
         synergies = SkillsMatrix.get_skill_synergies()
 
-        features_md = "\n".join([f"{i+1}. **{f['breakthrough']}**: Resets '{f['friction']}'." for i, f in enumerate(frictions)])
+        features_md = "\n".join([f"{i+1}. **{f['breakthrough']}**: Inverts '{f['friction']}'." for i, f in enumerate(frictions)])
         synergies_md = "\n".join([f"- **`{k}`**: {v}" for k, v in synergies.items()])
 
         return f"""# SPARK IDEATION BLUEPRINT: {concept}
 
-## 1. Visione Creativa & WOW Factor
+## 1. Creative Vision & WOW Factor
 Transform '{concept}' from a passive utility into an autonomous, proactive, state-of-the-art ecosystem.
 
 ## 2. Breakthrough Features (Friction -> Feature Inversion)

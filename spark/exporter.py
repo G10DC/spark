@@ -1,6 +1,5 @@
 import json
 from typing import Dict, Any
-from pathlib import Path
 
 class BlueprintExporter:
     """
@@ -20,7 +19,7 @@ class BlueprintExporter:
 
         return f"""# ⚡ SPARK IDEATION BLUEPRINT: {title}
 
-## 💡 1. Visione Creativa & WOW Factor
+## 💡 1. Creative Vision & WOW Factor
 {vision}
 
 ## 🚀 2. Breakthrough Features (Friction -> Feature Inversion)
@@ -51,7 +50,7 @@ class BlueprintExporter:
         ])
 
         return f"""<!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Spark Blueprint - {title}</title>
@@ -68,7 +67,7 @@ class BlueprintExporter:
   <div class="container">
     <h1>⚡ Spark Ideation Blueprint: {title}</h1>
     <div class="vision">
-      <h2>💡 Visione Creativa</h2>
+      <h2>💡 Creative Vision</h2>
       <p>{vision}</p>
     </div>
     <h2>🚀 Breakthrough Features</h2>
