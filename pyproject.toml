@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "spark-ideation"
+version = "0.1.0"
+description = "Creative Ideation, Cross-Domain Synthesis & Project Evolution Engine"
+authors = [
+    { name = "G10DC", email = "g10dc@github.com" }
+]
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+keywords = ["ideation", "ai", "creativity", "antigravity", "gemma", "brainstorming"]
+dependencies = [
+    "requests>=2.28.0",
+    "pydantic>=2.0.0"
+]
+
+[project.scripts]
+spark-cli = "spark.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/G10DC/spark"
+Repository = "https://github.com/G10DC/spark"
