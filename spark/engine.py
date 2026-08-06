@@ -6,7 +6,7 @@ from typing import Dict, Any
 from spark.lenses import IdeationLenses
 from spark.skills_matrix import SkillsMatrix
 
-GEMMA_WORKER_DIR = r"C:\Users\GdC\.unsloth\studio"
+GEMMA_WORKER_DIR = os.getenv("GEMMA_WORKER_DIR", os.path.expanduser("~/.unsloth/studio"))
 
 class SparkEngine:
     def __init__(self, studio_url: str = "http://127.0.0.1:8888"):
