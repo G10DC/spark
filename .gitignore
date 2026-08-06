@@ -32,3 +32,8 @@ venv.bak/
 # System files
 .DS_Store
 Thumbs.db
+
+# Enforced by G10DC Pruning
+node_modules/
+.ast-cache.json
+*.log
